@@ -221,9 +221,9 @@ func (r *rateLimitedReader) Read(p []byte) (n int, err error) {
 		// n is 10 mb,  bytespersec is 2 mb
 		// 10 / 2 = 5
 		expectedDuration := time.Duration(n*int(time.Second)) / time.Duration(r.bytesPerSec) // = 5
-		elapsed := time.Since(start)// 3 seconds passed
-		sleepDuration := expectedDuration - elapsed // 5 - 3
-		if sleepDuration > 0 { // 2
+		elapsed := time.Since(start)                                                         // 3 seconds passed
+		sleepDuration := expectedDuration - elapsed                                          // 5 - 3
+		if sleepDuration > 0 {                                                               // 2
 			time.Sleep(sleepDuration) // sleep for 2 seconds
 		}
 	}
